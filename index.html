@@ -3,528 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Store // 【 東京・暗黒 】 Dark E-Girl & Japanese Cyber Streetwear</title>
-    
-    <!-- Google Fonts (Editorial, Sans-Serif y Monospace Industrial) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Hoja de estilos del sistema de diseño Dark E-Girl & Japanese Cyber Grunge -->
+    <title>HARAJUKU | Alternative Streetwear</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- OVERLAY DE TEXTURA FILM GRAIN / NOISE SUTIL -->
-    <div class="noise-overlay" aria-hidden="true"></div>
-
-    <!-- BARRA DE ANUNCIOS / TICKER TOKIO-HARAJUKU -->
-    <aside class="announcement-bar" aria-label="Avisos técnicos y promociones">
-        <div class="announcement-container">
-            <p>
-                <span class="ticker-tag">【 東京 // TOKYO ARCHIVE FW_26 】</span>
-                <span>ENVÍO GRATIS EN PEDIDOS &gt; $50.00 USD</span>
-                <span class="ticker-divider">/</span>
-                <span>CÓDIGO ACTIVO:</span>
-                <span class="promo-code-tag">FASHION30</span>
-                <span class="ticker-highlight">[-30% OFF EN CHECKOUT]</span>
-            </p>
-        </div>
-    </aside>
-
-    <!-- HEADER Y NAVEGACIÓN TOKIO UNDERGROUND -->
-    <header class="main-header" id="header">
-        <div class="header-container">
-            <!-- Menú Hamburguesa para Móviles -->
-            <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Abrir menú de navegación">
-                <i class="fa-solid fa-bars-staggered"></i>
-            </button>
-
-            <!-- Logo de la Marca: Dark E-Girl & Japanese Streetwear -->
-            <a href="#" class="brand-logo">
-                <span class="logo-jp">【 暗黒 】</span>
-                <span class="logo-main">FASHION</span>
-                <span class="logo-slash">/</span>
-                <span class="logo-accent">STORE</span>
-                <span class="logo-sub">[FW26]</span>
-            </a>
-
-            <!-- Buscador en Header -->
-            <div class="header-search-box">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input 
-                    type="text" 
-                    id="headerSearchInput" 
-                    placeholder="[ 検索 / BUSCAR EN ARCHIVO... ]" 
-                    aria-label="Buscar productos"
-                    autocomplete="off"
-                >
-                <button class="clear-search-btn" id="clearSearchBtn" title="Limpiar búsqueda">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <!-- Navegación Principal Bilingüe -->
-            <nav class="main-nav" id="mainNav">
-                <div class="mobile-nav-header">
-                    <span class="nav-mobile-title">【 目次 // NAVIGATION_INDEX 】</span>
-                    <button class="close-nav-btn" id="closeNavBtn" aria-label="Cerrar menú">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#hero" class="nav-link active"><span class="link-idx">01/</span>INICIO</a></li>
-                    <li><a href="#catalogo" class="nav-link" data-category="todos"><span class="link-idx">02/</span>CATÁLOGO</a></li>
-                    <li><a href="#catalogo" class="nav-link" data-category="mujer"><span class="link-idx">03/</span>MUJER</a></li>
-                    <li><a href="#catalogo" class="nav-link" data-category="hombre"><span class="link-idx">04/</span>HOMBRE</a></li>
-                    <li><a href="#catalogo" class="nav-link" data-category="accesorios"><span class="link-idx">05/</span>ACCESORIOS</a></li>
-                    <li><a href="#promocion" class="nav-link promo-link"><span class="link-idx">06/</span>ARCHIVE_PROMO</a></li>
-                </ul>
-            </nav>
-
-            <!-- Acciones del Header -->
-            <div class="header-actions">
-                <!-- Botón Carrito con Badge E-Girl Pink -->
-                <button class="cart-trigger-btn" id="cartTriggerBtn" aria-label="Abrir carrito de compras">
-                    <span class="cart-trigger-icon"><i class="fa-solid fa-bag-shopping"></i></span>
-                    <span class="cart-label-text">BAG</span>
-                    <span class="cart-badge-bracket">[</span>
-                    <span class="cart-badge" id="cartBadgeCount">0</span>
-                    <span class="cart-badge-bracket">]</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Buscador móvil expandible -->
-        <div class="mobile-search-wrapper">
-            <div class="mobile-search-box">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input 
-                    type="text" 
-                    id="mobileSearchInput" 
-                    placeholder="[ 検索 / BUSCAR PRENDA O ACCESORIO... ]" 
-                    aria-label="Buscar productos en móvil"
-                >
+    <!-- Menú de Navegación -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">HARAJUKU</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+            </ul>
+            <div class="search-cart-group">
+                <input type="text" class="search-input" placeholder="Buscar producto...">
+                <button class="cart-btn">🛒 Carrito (0)</button>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION (DARK E-GIRL & JAPANESE CYBER STREETWEAR) -->
-    <section class="hero-section" id="hero">
-        <div class="hero-grid-lines" aria-hidden="true"></div>
-        <div class="hero-content">
-            <div class="hero-metadata-badge">
-                <span class="hero-meta-dot"></span>
-                <span>【 渋谷・原宿 // TOKYO UNDERGROUND 】 35.6895° N, 139.6917° E</span>
-            </div>
-            
-            <h1 class="hero-title">
-                DARK_HARJUKU
-                <span class="hero-title-sub">AUTUMN / WINTER 2026 // サイバー・ストリートウェア</span>
-            </h1>
-
-            <p class="hero-description">
-                Fusión de siluetas dark e-girl, sastrería japonesa deconstruida, techwear utilitario y estética cyber grunge concebida en los callejones subterráneos de Tokio.
-            </p>
-
-            <div class="hero-cta-group">
-                <a href="#catalogo" class="btn btn-primary" id="heroExploreBtn">
-                    EXPLORAR ARCHIVO <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-                <a href="#promocion" class="btn btn-secondary">
-                    ARCHIVE DROPS [ -30% OFF ]
-                </a>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">18_ED</span>
-                    <span class="stat-label">PIEZAS ARCHIVE</span>
-                </div>
-                <div class="stat-item-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number">JIRAI_TECH</span>
-                    <span class="stat-label">HARAJUKU AESTHETIC</span>
-                </div>
-                <div class="stat-item-divider"></div>
-                <div class="stat-item">
-                    <span class="stat-number">GLOBAL</span>
-                    <span class="stat-label">DISTRIBUCIÓN DIRECTA</span>
-                </div>
-            </div>
-        </div>
+    <!-- Banner Promocional -->
+    <section class="hero-banner" id="inicio">
+        <h1>Harajuku Cyber Grunge</h1>
+        <p>Estilo alternativo, influencias góticas y streetwear asiático en tonos oscuros y fríos.</p>
     </section>
 
-    <!-- TIRA DE BENEFICIOS / HARAJUKU INDUSTRIAL QUADRANTS -->
-    <section class="features-bar">
-        <div class="features-container">
-            <div class="feature-card">
-                <div class="feature-meta">[ 01 // 国際配送 ]</div>
-                <div class="feature-text">
-                    <h4>LOGÍSTICA GLOBAL</h4>
-                    <p>Envío gratuito prioritario en pedidos superiores a $50.00 USD con seguimiento cifrado.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-meta">[ 02 // 暗号決済 ]</div>
-                <div class="feature-text">
-                    <h4>TRANSACCIÓN SEGURA</h4>
-                    <p>Protocolos de seguridad de 256 bits para pagos cifrados de extremo a extremo.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-meta">[ 03 // 返品保証 ]</div>
-                <div class="feature-text">
-                    <h4>GARANTÍA ARCHIVE</h4>
-                    <p>30 días de cobertura completa para cambios y devoluciones sin complicaciones.</p>
-                </div>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-meta">[ 04 // 24時間サポート ]</div>
-                <div class="feature-text">
-                    <h4>SOPORTE DIGITAL 24/7</h4>
-                    <p>Atención directa personalizada los 365 días del año para cualquier consulta técnica.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BANNER PROMOCIONAL / SPECIAL ARCHIVE TERMINAL -->
-    <section class="promo-banner-section" id="promocion">
-        <div class="promo-banner-card">
-            <div class="promo-card-corner tl">+</div>
-            <div class="promo-card-corner tr">+</div>
-            <div class="promo-card-corner bl">+</div>
-            <div class="promo-card-corner br">+</div>
-            
-            <div class="promo-header-info">
-                <span class="promo-badge">【 特別割引 // ARCHIVE TERMINAL 】</span>
-                <span class="promo-serial">SYS_ID: 8921-TK26</span>
-            </div>
-
-            <h2 class="promo-title">30% DESCUENTO EN TODO EL ARCHIVO</h2>
-            <p class="promo-subtitle">Ingresa el código promocional en el terminal del carrito antes de confirmar tu pedido:</p>
-            
-            <div class="promo-code-container">
-                <span class="promo-code-prefix">CODE_REF:</span>
-                <code class="promo-code-display" id="promoCodeDisplay">FASHION30</code>
-                <button class="btn-copy-code" id="btnCopyCode" title="Copiar cupón">
-                    <i class="fa-regular fa-copy"></i> <span id="copyBtnText">COPIAR CUPÓN</span>
-                </button>
-            </div>
-            
-            <p class="promo-terms">* Válido para las 18 piezas de Mujer, Hombre y Accesorios. Sin compra mínima condicional.</p>
-        </div>
-    </section>
-
-    <!-- CATÁLOGO DE PRODUCTOS / LOOKBOOK TOKIO -->
-    <main class="catalog-section" id="catalogo">
-        <div class="catalog-container">
-            <div class="catalog-header-text">
-                <div class="section-tag-line">
-                    <span class="section-tag">【 コレクション // LOOKBOOK ARCHIVE 2026 】</span>
-                    <span class="section-coords">[35.6895°N // TOKYO]</span>
-                </div>
-                <h2 class="section-title">SELECCIÓN DE TEMPORADA</h2>
-                <p class="section-subtitle">
-                    Prendas de corte deconstruido, arneses metálicos, siluetas e-girl y sastrería oscura contemporánea.
-                </p>
-            </div>
-
-            <!-- BARRA DE CONTROLES: FILTROS Y ORDENAMIENTO -->
-            <div class="catalog-controls">
-                <!-- Filtros de categoría -->
-                <div class="category-filters" id="categoryFilters">
-                    <button class="filter-btn active" data-category="todos">
-                        TODOS <span class="filter-count">[ <strong id="countTodos">18</strong> ]</span>
-                    </button>
-                    <button class="filter-btn" data-category="mujer">
-                        MUJER <span class="filter-count">[ <strong id="countMujer">6</strong> ]</span>
-                    </button>
-                    <button class="filter-btn" data-category="hombre">
-                        HOMBRE <span class="filter-count">[ <strong id="countHombre">6</strong> ]</span>
-                    </button>
-                    <button class="filter-btn" data-category="accesorios">
-                        ACCESORIOS <span class="filter-count">[ <strong id="countAccesorios">6</strong> ]</span>
-                    </button>
-                </div>
-
-                <!-- Opciones de ordenamiento y contador -->
-                <div class="catalog-sort-box">
-                    <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> ORDENAR:</label>
-                    <select id="sortSelect" class="sort-dropdown">
-                        <option value="default">[ RECOMENDADOS ]</option>
-                        <option value="price-asc">PRECIO: MENOR A MAYOR</option>
-                        <option value="price-desc">PRECIO: MAYOR A MENOR</option>
-                        <option value="name-asc">ÍNDICE ALFABÉTICO (A - Z)</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Indicador de resultados activos -->
-            <div class="results-info-bar">
-                <span id="resultsCountText">// MOSTRANDO 18 PRODUCTOS</span>
-                <span id="activeFilterBadge" class="active-filter-badge" style="display: none;">
-                    FILTRO: <strong id="filterBadgeLabel">TODOS</strong>
-                    <button id="clearFiltersBtn" title="Restablecer filtros">&times;</button>
-                </span>
-            </div>
-
-            <!-- GRID DE PRODUCTOS -->
-            <div class="products-grid" id="productsGrid">
-                <!-- Inyectado dinámicamente vía JavaScript -->
-            </div>
-
-            <!-- ESTADO DE BÚSQUEDA SIN COINCIDENCIAS -->
-            <div class="no-products-found" id="noProductsFound" style="display: none;">
-                <div class="empty-icon-wrap">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <h3>【 該当なし // REGISTRO NO LOCALIZADO 】</h3>
-                <p>No se encontraron piezas que coincidan con la búsqueda o filtro aplicado.</p>
-                <button class="btn btn-primary" id="btnResetSearch">RESTABLECER ARCHIVO COMPLETO</button>
-            </div>
-        </div>
-    </main>
-
-    <!-- CARRITO DE COMPRAS (MONOLITHIC OFFCANVAS DRAWER) -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-    
-    <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
-        <!-- Header del Carrito -->
-        <div class="cart-header">
-            <div class="cart-header-title">
-                <span class="cart-title-indicator">【 買い物かご 】</span>
-                <h3>ARCHIVE_BAG</h3>
-                <span class="cart-total-badge" id="drawerCartBadge">0 ÍTEMS</span>
-            </div>
-            <button class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar carrito">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <!-- Barra de Progreso para Envío Gratis con Acento Rosa -->
-        <div class="free-shipping-tracker">
-            <p id="freeShippingText">Agrega <strong>$50.00</strong> más para obtener <strong>Envío Gratis</strong></p>
-            <div class="shipping-progress-bar">
-                <div class="shipping-progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
-            </div>
-        </div>
-
-        <!-- Lista de Productos en el Carrito -->
-        <div class="cart-items-container" id="cartItemsContainer">
-            <!-- Renderizado dinámico desde JavaScript -->
-        </div>
-
-        <!-- Estado Carrito Vacío -->
-        <div class="cart-empty-state" id="cartEmptyState" style="display: none;">
-            <div class="empty-bag-icon">
-                <i class="fa-solid fa-box-open"></i>
-            </div>
-            <h4>【 空 // ARCHIVE_BAG VACÍO 】</h4>
-            <p>No has agregado ninguna pieza a tu selección de compra.</p>
-            <button class="btn btn-primary" id="btnGoShop">EXPLORAR ARCHIVO</button>
-        </div>
-
-        <!-- Footer del Carrito con Resumen y Checkout -->
-        <div class="cart-footer" id="cartFooter">
-            <!-- Cupón de Descuento Terminal -->
-            <div class="coupon-box">
-                <div class="coupon-input-group">
-                    <span class="coupon-icon-prefix">【 クーポン 】</span>
-                    <input 
-                        type="text" 
-                        id="couponInput" 
-                        placeholder="INGRESAR CÓDIGO (EJ: FASHION30)" 
-                        aria-label="Cupón de descuento"
-                    >
-                    <button id="applyCouponBtn" class="btn-apply-coupon">APLICAR</button>
-                </div>
-                <div id="couponMessage" class="coupon-feedback"></div>
-            </div>
-
-            <!-- Resumen de Costos Monocromo con Acento Rosa -->
-            <div class="cart-summary-breakdown">
-                <div class="summary-row">
-                    <span class="summary-label">SUBTOTAL:</span>
-                    <strong id="cartSubtotal" class="summary-value">$0.00</strong>
-                </div>
-                <div class="summary-row discount-row" id="discountRow" style="display: none;">
-                    <span class="summary-label">DESCUENTO (<span id="discountPercent">30%</span>):</span>
-                    <strong id="cartDiscount" class="summary-value">-$0.00</strong>
-                </div>
-                <div class="summary-row">
-                    <span class="summary-label">ENVÍO:</span>
-                    <strong id="cartShipping" class="summary-value">Gratis</strong>
-                </div>
-                <div class="summary-divider"></div>
-                <div class="summary-row total-row">
-                    <span class="summary-label">TOTAL ESTIMADO:</span>
-                    <strong id="cartTotal" class="total-price-text">$0.00</strong>
-                </div>
-            </div>
-
-            <!-- Botones de Acción -->
-            <div class="cart-actions-group">
-                <button class="btn btn-primary btn-block" id="btnCheckout">
-                    <i class="fa-solid fa-lock"></i> PROCEDER AL CHECKOUT →
-                </button>
-                <button class="btn-clear-cart" id="btnClearCart">
-                    <i class="fa-solid fa-trash-can"></i> [ VACIAR SELECCIÓN ]
-                </button>
-            </div>
-        </div>
-    </aside>
-
-    <!-- MODAL DE CHECKOUT / CIERRE DE ORDEN -->
-    <div class="modal-overlay" id="checkoutModalOverlay">
-        <div class="modal-window">
-            <button class="modal-close-btn" id="closeModalBtn">&times;</button>
-            
-            <div id="checkoutFormStep">
-                <div class="modal-header">
-                    <span class="modal-sys-code">【 注文確認 // CHECKOUT_TERMINAL_V1 】</span>
-                    <h3>CONFIRMAR PEDIDO</h3>
-                    <p>Ingresa los datos para registrar tu orden en el sistema central de Fashion Store.</p>
-                </div>
-
-                <form id="checkoutForm" class="checkout-form" novalidate>
-                    <div class="form-group">
-                        <label for="customerName"><i class="fa-solid fa-user"></i> NOMBRE COMPLETO [SOLO LETRAS]</label>
-                        <input type="text" id="customerName" required placeholder="Ej: Alejandra Morales">
-                        <span class="input-error-message" id="errorCustomerName"></span>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="customerEmail"><i class="fa-solid fa-envelope"></i> CORREO ELECTRÓNICO</label>
-                            <input type="email" id="customerEmail" required placeholder="contacto@correo.com">
-                            <span class="input-error-message" id="errorCustomerEmail"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="customerPhone"><i class="fa-solid fa-phone"></i> TELÉFONO [SOLO DÍGITOS]</label>
-                            <input type="tel" id="customerPhone" inputmode="numeric" maxlength="10" required placeholder="Ej: 5512345678">
-                            <span class="input-error-message" id="errorCustomerPhone"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="customerAddress"><i class="fa-solid fa-location-dot"></i> DIRECCIÓN DE ENTREGA</label>
-                        <input type="text" id="customerAddress" required placeholder="Calle, número, colonia, ciudad y C.P.">
-                        <span class="input-error-message" id="errorCustomerAddress"></span>
-                    </div>
-
-                    <div class="order-preview-box">
-                        <div class="order-preview-row">
-                            <span>ARTÍCULOS A DESPACHAR:</span>
-                            <span id="previewItemsCount" class="mono-value">0 productos</span>
-                        </div>
-                        <div class="order-preview-row font-bold">
-                            <span>MONTO TOTAL A LIQUIDAR:</span>
-                            <span id="previewTotalAmount" class="mono-value-highlight">$0.00</span>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block btn-confirm-order">
-                        <i class="fa-solid fa-check"></i> CONFIRMAR Y REGISTRAR ORDEN →
-                    </button>
-                </form>
-            </div>
-
-            <!-- Vista de Éxito de Compra -->
-            <div id="checkoutSuccessStep" style="display: none;" class="checkout-success-view">
-                <div class="success-icon-wrap">
-                    <i class="fa-solid fa-check-double"></i>
-                </div>
-                <h3>【 完了 // ORDEN REGISTRADA 】</h3>
-                <p class="success-message">Tu pedido ha sido procesado y archivado satisfactoriamente.</p>
-                
-                <div class="order-details-card">
-                    <p><strong>N° DE ORDEN:</strong> <span id="orderNumberCode" class="mono-tag">#FS-89213</span></p>
-                    <p><strong>REMITENTE:</strong> <span id="confirmedCustomerName"></span></p>
-                    <p><strong>TOTAL PAGADO:</strong> <span id="confirmedOrderTotal" class="mono-total-text"></span></p>
-                    <p class="order-note">[NOTIFICACIÓN TÉCNICA GENERADA EN SISTEMA DE ENVÍOS TOKYO]</p>
-                </div>
-
-                <button class="btn btn-primary btn-block" id="btnContinueShopping">
-                    VOLVER AL ARCHIVO
-                </button>
-            </div>
-        </div>
+    <!-- Filtro de Categorías -->
+    <div class="categories-nav">
+        <button class="category-btn active">Todos</button>
+        <button class="category-btn">Hombre</button>
+        <button class="category-btn">Mujer</button>
+        <button class="category-btn">Accesorios</button>
     </div>
 
-    <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
-    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+    <!-- Catálogo de Productos (Muestra inicial de 12 elementos) -->
+    <main class="products-container" id="catalogo">
 
-    <!-- FOOTER INDUSTRIAL Y EDITORIAL TOKIO -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-col brand-col">
-                <a href="#" class="brand-logo footer-logo">
-                    <span class="logo-jp">【 暗黒 】</span>
-                    <span class="logo-main">FASHION</span>
-                    <span class="logo-slash">/</span>
-                    <span class="logo-accent">STORE</span>
-                </a>
-                <p class="footer-about">
-                    Laboratorio de diseño y confección streetwear alternativo Tokio/Seúl. Siluetas monocromáticas, arquitectura textil y experimentación estética para el underground contemporáneo.
-                </p>
-                <div class="footer-social-links">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="#" aria-label="Github"><i class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title">【 コレクション // DROPS 】</h4>
-                <ul class="footer-links">
-                    <li><a href="#catalogo" data-category="mujer">// MODA MUJER</a></li>
-                    <li><a href="#catalogo" data-category="hombre">// MODA HOMBRE</a></li>
-                    <li><a href="#catalogo" data-category="accesorios">// HARDWARE &amp; JOYERÍA</a></li>
-                    <li><a href="#promocion">// ARCHIVE DROPS</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title">【 プロトコル // GUÍA 】</h4>
-                <ul class="footer-links">
-                    <li><a href="#">// PREGUNTAS FRECUENTES</a></li>
-                    <li><a href="#">// GUÍA DE TALLES OVERSIZE</a></li>
-                    <li><a href="#">// ENVÍOS INTERNACIONALES</a></li>
-                    <li><a href="#">// POLÍTICA DE DEVOLUCIÓN</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-title">【 安全決済 // SECURE 】</h4>
-                <div class="payment-methods-grid">
-                    <span class="payment-badge"><i class="fa-brands fa-cc-visa"></i> VISA</span>
-                    <span class="payment-badge"><i class="fa-brands fa-cc-mastercard"></i> MC</span>
-                    <span class="payment-badge"><i class="fa-brands fa-cc-paypal"></i> PAYPAL</span>
-                    <span class="payment-badge"><i class="fa-brands fa-cc-apple-pay"></i> APPLE</span>
-                </div>
-                <p class="safe-checkout-label"><i class="fa-solid fa-shield-halved"></i> PROTOCOLO SSL 256-BIT CIFRADO</p>
+        <!-- Producto 1 -->
+        <div class="product-card">
+            <img src="images/producto1.jpg" alt="Chamarra Cyber Grunge" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Chamarra Oversized Metal</h3>
+                <div class="product-price">$89.00 USD</div>
+                <p class="product-desc">Chamarra negra con detalles metálicos estilo e-boy.</p>
+                <button class="add-cart-btn">Agregar al carrito</button>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="footer-bottom-container">
-                <p>&copy; 2026 FASHION STORE // ALL RIGHTS RESERVED. ARCHIVE ID: FS-2026-TK</p>
-                <p class="credits-text">【 東京・渋谷・原宿 // TOKYO DIGITAL UNDERGROUND 】</p>
+        <!-- Producto 2 -->
+        <div class="product-card">
+            <img src="images/producto2.jpg" alt="Sudadera Gothic Asian" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Hoodie Dark Goth</h3>
+                <div class="product-price">$65.00 USD</div>
+                <p class="product-desc">Sudadera con capucha y corte holgado monocromático.</p>
+                <button class="add-cart-btn">Agregar al carrito</button>
             </div>
         </div>
-    </footer>
 
-    <!-- SCRIPTS (DATASET Y LÓGICA DE APLICACIÓN) -->
-    <script src="js/products.js"></script>
-    <script src="js/app.js"></script>
+        <!-- Repetir estructura para completar los 12 productos -->
+
+    </main>
+
 </body>
 </html>
