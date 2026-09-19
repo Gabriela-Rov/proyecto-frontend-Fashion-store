@@ -215,22 +215,31 @@ function renderCatalog() {
                         alt="${product.name}" 
                         loading="lazy"
                         onerror="this.src='https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=600&q=80'"
+                        onerror="this.src='https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&w=800&q=80'"
                     >
                     ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
                     <span class="category-tag">${product.categoryName}</span>
+                    ${product.badge ? `<span class="product-badge">[ ${product.badge} ]</span>` : ''}
+                    <span class="category-tag">// ${product.categoryName.toUpperCase()}</span>
                 </div>
 
                 <div class="product-info">
                     <h3 class="product-title" title="${product.name}">${product.name}</h3>
+                    <div class="product-info-top">
+                        <span class="product-ref-id">SYS_ID_${String(product.id).padStart(2, '0')}</span>
+                        <h3 class="product-title" title="${product.name}">${product.name}</h3>
+                    </div>
                     <p class="product-desc">${product.description}</p>
                     
                     <div class="product-pricing">
                         <span class="product-price">$${product.price.toFixed(2)}</span>
+                        <span class="product-price">$${product.price.toFixed(2)} <span class="currency-tag">USD</span></span>
                         ${hasDiscount ? `<span class="product-old-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
                     </div>
 
                     <button class="btn-add-cart" onclick="handleAddToCart(${product.id}, this)">
                         <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+                        <i class="fa-solid fa-plus"></i> AGREGAR AL CARRITO
                     </button>
                 </div>
             </article>
@@ -272,6 +281,7 @@ window.handleAddToCart = function(productId, btnElement = null) {
         const originalHtml = btnElement.innerHTML;
         btnElement.classList.add('added-feedback');
         btnElement.innerHTML = `<i class="fa-solid fa-check"></i> ¡Agregado!`;
+        btnElement.innerHTML = `<i class="fa-solid fa-check"></i> [ AGREGADO ]`;
         setTimeout(() => {
             btnElement.classList.remove('added-feedback');
             btnElement.innerHTML = originalHtml;
@@ -280,6 +290,7 @@ window.handleAddToCart = function(productId, btnElement = null) {
 
     // Notificación Toast
     showToast(`"${product.name}" se agregó al carrito`, 'fa-solid fa-bag-shopping');
+    showToast(`"${product.name}" archivado en el carrito`, 'fa-solid fa-bag-shopping');
 };
 
 /**
@@ -315,17 +326,15 @@ window.removeFromCart = function(productId) {
 };
 
 /**
- * Vacía por completo el carrito de compras
+ * Vacía por completo el carrito de compras directamente al hacer clic
  */
 function clearEntireCart() {
     if (AppState.cart.length === 0) return;
 
-    if (confirm('¿Estás seguro de que deseas vaciar tu carrito de compras?')) {
-        AppState.cart = [];
-        saveCart();
-        updateCartUI();
-        showToast('El carrito ha sido vaciado', 'fa-solid fa-trash');
-    }
+    AppState.cart = [];
+    saveCart();
+    updateCartUI();
+    showToast('El carrito ha sido vaciado', 'fa-solid fa-trash');
 }
 
 /**
@@ -505,6 +514,7 @@ function openCheckoutModal() {
     DOM.checkoutFormStep.style.display = 'block';
     DOM.checkoutSuccessStep.style.display = 'none';
     DOM.checkoutForm.reset();
+    clearAllCheckoutErrors();
 
     DOM.checkoutModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -515,20 +525,101 @@ function closeCheckoutModal() {
     document.body.style.overflow = '';
 }
 
+function setFieldError(inputId, errorId, message) {
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    if (input) input.classList.add('input-error');
+    if (error) error.textContent = message;
+}
+
+function clearFieldError(inputId, errorId) {
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    if (input) input.classList.remove('input-error');
+    if (error) error.textContent = '';
+}
+
+function clearAllCheckoutErrors() {
+    ['customerName', 'customerEmail', 'customerPhone', 'customerAddress'].forEach(id => {
+        const input = document.getElementById(id);
+        if (input) input.classList.remove('input-error');
+    });
+    ['errorCustomerName', 'errorCustomerEmail', 'errorCustomerPhone', 'errorCustomerAddress'].forEach(id => {
+        const error = document.getElementById(id);
+        if (error) error.textContent = '';
+    });
+}
+
 /**
- * Envío simulado del pedido
+ * Envío simulado del pedido con validación estricta
  */
 function handleCheckoutSubmit(e) {
     e.preventDefault();
 
-    const customerName = document.getElementById('customerName').value;
+    const nameInput = document.getElementById('customerName');
+    const emailInput = document.getElementById('customerEmail');
+    const phoneInput = document.getElementById('customerPhone');
+    const addressInput = document.getElementById('customerAddress');
+
+    const nameVal = nameInput ? nameInput.value.trim() : '';
+    const emailVal = emailInput ? emailInput.value.trim() : '';
+    const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+    const addressVal = addressInput ? addressInput.value.trim() : '';
+
+    let isValid = true;
+    let firstInvalidInput = null;
+
+    // 1. Validar Nombre: solo letras y espacios, mínimo 3 caracteres
+    const nameRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]{3,}$/;
+    if (!nameVal || !nameRegex.test(nameVal)) {
+        setFieldError('customerName', 'errorCustomerName', 'Ingresa tu nombre completo (solo letras, mínimo 3 caracteres).');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = nameInput;
+    } else {
+        clearFieldError('customerName', 'errorCustomerName');
+    }
+
+    // 2. Validar Correo Electrónico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailVal || !emailRegex.test(emailVal)) {
+        setFieldError('customerEmail', 'errorCustomerEmail', 'Ingresa un correo electrónico válido (ej: usuario@correo.com).');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = emailInput;
+    } else {
+        clearFieldError('customerEmail', 'errorCustomerEmail');
+    }
+
+    // 3. Validar Teléfono: estrictamente solo números, 10 dígitos estándar
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneVal || !phoneRegex.test(phoneVal)) {
+        setFieldError('customerPhone', 'errorCustomerPhone', 'Ingresa un número telefónico de 10 dígitos (solo números).');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = phoneInput;
+    } else {
+        clearFieldError('customerPhone', 'errorCustomerPhone');
+    }
+
+    // 4. Validar Dirección
+    if (!addressVal || addressVal.length < 6) {
+        setFieldError('customerAddress', 'errorCustomerAddress', 'Ingresa tu dirección completa de entrega (mínimo 6 caracteres).');
+        isValid = false;
+        if (!firstInvalidInput) firstInvalidInput = addressInput;
+    } else {
+        clearFieldError('customerAddress', 'errorCustomerAddress');
+    }
+
+    if (!isValid) {
+        if (firstInvalidInput) firstInvalidInput.focus();
+        return;
+    }
+
     const finalTotal = DOM.cartTotal.textContent;
 
     // Generar código aleatorio de orden
     const randomOrder = 'FS-' + Math.floor(10000 + Math.random() * 90000);
 
     DOM.orderNumberCode.textContent = `#${randomOrder}`;
-    DOM.confirmedCustomerName.textContent = customerName;
+    DOM.confirmedCustomerName.textContent = nameVal;
     DOM.confirmedOrderTotal.textContent = finalTotal;
 
     // Cambiar a vista de éxito
@@ -623,6 +714,53 @@ function initEventListeners() {
     });
     DOM.checkoutForm.addEventListener('submit', handleCheckoutSubmit);
     DOM.btnContinueShopping.addEventListener('click', closeCheckoutModal);
+
+    // Validación interactiva en campos de checkout
+    const inputPhone = document.getElementById('customerPhone');
+    if (inputPhone) {
+        // Bloquear letras y caracteres que no sean dígitos
+        inputPhone.addEventListener('keydown', (e) => {
+            const allowedKeys = ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter', 'Home', 'End'];
+            if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) return;
+            if (!/^[0-9]$/.test(e.key)) {
+                e.preventDefault();
+            }
+        });
+        inputPhone.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+            clearFieldError('customerPhone', 'errorCustomerPhone');
+        });
+    }
+
+    const inputName = document.getElementById('customerName');
+    if (inputName) {
+        // Bloquear números y caracteres especiales
+        inputName.addEventListener('keydown', (e) => {
+            const allowedKeys = ['Backspace', 'Tab', 'ArrowLeft', 'ArrowRight', 'Delete', 'Enter', 'Home', 'End', ' '];
+            if (allowedKeys.includes(e.key) || e.ctrlKey || e.metaKey) return;
+            if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]$/.test(e.key)) {
+                e.preventDefault();
+            }
+        });
+        inputName.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]/g, '');
+            clearFieldError('customerName', 'errorCustomerName');
+        });
+    }
+
+    const inputEmail = document.getElementById('customerEmail');
+    if (inputEmail) {
+        inputEmail.addEventListener('input', () => {
+            clearFieldError('customerEmail', 'errorCustomerEmail');
+        });
+    }
+
+    const inputAddress = document.getElementById('customerAddress');
+    if (inputAddress) {
+        inputAddress.addEventListener('input', () => {
+            clearFieldError('customerAddress', 'errorCustomerAddress');
+        });
+    }
 
     // Buscador en Desktop
     DOM.headerSearchInput.addEventListener('input', (e) => {

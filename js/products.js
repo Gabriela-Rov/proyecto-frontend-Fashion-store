@@ -1,210 +1,217 @@
-// Dataset del Catálogo de Fashion Store
-// Categorías: 'mujer', 'hombre', 'accesorios'
-// Mínimo 12 productos requeridos (contiene 18 productos premium)
+// ==========================================================================
+// FASHION STORE // TOKYO DARK ARCHIVE (東京・暗黒)
+// Colección: Dark E-Girl, Cyber Grunge, Jirai Kei & Japanese Streetwear
+// Prendas y accesorios reales con contrastes en negro, blanco y acentos rosa
+// ==========================================================================
 
 const PRODUCTS = [
-  // --- CATEGORÍA: MUJER ---
+  // ========================================================================
+  // CATEGORÍA: MUJER (Dark E-Girl / Jirai Kei / Cyber Grunge / Harajuku)
+  // ========================================================================
   {
     id: 1,
-    name: "Vestido Midi Floral Satinado",
+    name: "Falda Plisada Jirai Grommet & Chains",
     category: "mujer",
     categoryName: "Mujer",
-    price: 64.99,
-    originalPrice: 89.99,
-    image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80",
-    description: "Vestido elegante de tela satinada con estampado floral suave y caída natural.",
-    badge: "Oferta"
+    price: 65.00,
+    originalPrice: 85.00,
+    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=800&q=80",
+    description: "Falda tableada en twill negro intenso con ojales metálicos reforzados, cintas con hebilla y cadenas desmontables de acero inoxidable.",
+    badge: "【 地雷系 // JIRAI 】"
   },
   {
     id: 2,
-    name: "Blazer Rosa Pastel Chic",
-    category: "mujer",
-    categoryName: "Mujer",
-    price: 79.50,
-    originalPrice: null,
-    image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80",
-    description: "Blazer estructurado de corte moderno, solapas amplias y forro interior suave.",
-    badge: "Nuevo"
-  },
-  {
-    id: 3,
-    name: "Top Asimétrico Negro Ébano",
-    category: "mujer",
-    categoryName: "Mujer",
-    price: 32.00,
-    originalPrice: 45.00,
-    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80",
-    description: "Top minimalista de corte asimétrico en tejido elástico transpirable de alta densidad.",
-    badge: "Popular"
-  },
-  {
-    id: 4,
-    name: "Falda Plisada Rosa Perla",
+    name: "Top Asimétrico Cyber Mesh & Straps",
     category: "mujer",
     categoryName: "Mujer",
     price: 48.00,
-    originalPrice: 60.00,
-    image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=600&q=80",
-    description: "Falda midi con pliegues definidos y cinturilla elástica de acabado brillante.",
-    badge: null
+    originalPrice: 62.00,
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80",
+    description: "Top deconstruido de corte asimétrico en tejido negro técnico con arneses regulables y acabado minimalista de alta densidad.",
+    badge: "【 サイバー // CYBER 】"
+  },
+  {
+    id: 3,
+    name: "Hoodie Distressed Acid-Wash Anime Graphic",
+    category: "mujer",
+    categoryName: "Mujer",
+    price: 78.00,
+    originalPrice: 95.00,
+    image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
+    description: "Sudadera holgada en algodón pesado de 480gsm con lavado mineral ácido desgastado, cortes raw-cut y capucha amplia estilo Harajuku.",
+    badge: "【 原宿 // HARAJUKU 】"
+  },
+  {
+    id: 4,
+    name: "Blazer Brutalista Asimétrico Noir",
+    category: "mujer",
+    categoryName: "Mujer",
+    price: 118.00,
+    originalPrice: null,
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+    description: "Americana sastre contemporánea de corte arquitectónico, solapa cruzada angular y cierre por corchete metálico industrial.",
+    badge: "【 脱構築 // ARCHIVE 】"
   },
   {
     id: 5,
-    name: "Trench Coat Elegance Beige",
+    name: "Vestido Gótico Contemporáneo Dark Drape",
     category: "mujer",
     categoryName: "Mujer",
-    price: 119.00,
-    originalPrice: 149.00,
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80",
-    description: "Gabardina clásica con cinturón ajustable, solapa cruzada y botones marmolados.",
-    badge: "Exclusivo"
+    price: 89.00,
+    originalPrice: 110.00,
+    image: "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80",
+    description: "Vestido largo en viscosa pesada con drapeado fluido asimétrico, cuello halter elevado y dobladillos deshilachados post-punk.",
+    badge: "【 暗黒 // GOTHIC 】"
   },
   {
     id: 6,
-    name: "Conjunto Urbano Romántico",
+    name: "Maxi Trench Monolítico Cyber Tech",
     category: "mujer",
     categoryName: "Mujer",
-    price: 85.00,
-    originalPrice: null,
-    image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80",
-    description: "Dos piezas en tonalidad pastel ideal para eventos de día o salidas especiales.",
-    badge: "Tendencia"
+    price: 145.00,
+    originalPrice: 180.00,
+    image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80",
+    description: "Gabardina técnica impermeable de corte oversize con cuello militar alzado, cinchas de compresión y bolsillos modulares sellados.",
+    badge: "【 テック // TECHWEAR 】"
   },
 
-  // --- CATEGORÍA: HOMBRE ---
+  // ========================================================================
+  // CATEGORÍA: HOMBRE (Techwear / E-Boy / Tokyo Streetwear / Dark Cyber)
+  // ========================================================================
   {
     id: 7,
-    name: "Chaqueta Biker de Cuero Negro",
+    name: "Pantalón Cargo Táctico Multi-Strap Pink Barcode",
     category: "hombre",
     categoryName: "Hombre",
-    price: 129.99,
-    originalPrice: 169.99,
-    image: "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=600&q=80",
-    description: "Chaqueta de cuero sintético premium con cierres metálicos plateados y forro térmico.",
-    badge: "Top Ventas"
+    price: 88.00,
+    originalPrice: 115.00,
+    image: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80",
+    description: "Pantalón técnico en tejido ripstop impermeable con múltiples bolsillos modulares 3D, cinchas colgantes con hebillas y barcode reflectante.",
+    badge: "【 貨物 // TECH_CARGO 】"
   },
   {
     id: 8,
-    name: "Camisa Casual Lino Blanco",
+    name: "Chaqueta Cuero Raw Biker & Safety Pins",
     category: "hombre",
     categoryName: "Hombre",
-    price: 44.50,
-    originalPrice: 55.00,
-    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80",
-    description: "Camisa de lino 100% puro, fresca, cuello mao y corte regular fit sumamente cómodo.",
-    badge: null
+    price: 155.00,
+    originalPrice: 195.00,
+    image: "https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&w=800&q=80",
+    description: "Chaqueta de cuero vacuno grueso con textura mate envejecida, cremalleras asimétricas expuestas y remaches cromados estilo punk japonés.",
+    badge: "【 パンク // RAW_PUNK 】"
   },
   {
     id: 9,
-    name: "Blazer Slim Fit Noir",
+    name: "Camisa Boxy Deconstruida Tokio Street E-Boy",
     category: "hombre",
     categoryName: "Hombre",
-    price: 99.00,
-    originalPrice: null,
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
-    description: "Saco de vestir entallado de diseño contemporáneo para ocasiones formales.",
-    badge: "Elegante"
+    price: 54.00,
+    originalPrice: 70.00,
+    image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80",
+    description: "Camisa holgada de hombros caídos en popelín negro intenso con bolsillo de pecho superpuesto y costuras invertidas estilo Shibuya.",
+    badge: "【 渋谷 // TOKYO_FIT 】"
   },
   {
     id: 10,
-    name: "Suéter Casual Tejido Soft",
+    name: "Suéter Distressed Holey Knit Pink & Black",
     category: "hombre",
     categoryName: "Hombre",
-    price: 52.00,
-    originalPrice: 65.00,
-    image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=600&q=80",
-    description: "Jersey de punto suave con cuello redondo en tonalidad neutra y textura abrigadora.",
-    badge: null
+    price: 72.00,
+    originalPrice: 90.00,
+    image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
+    description: "Jersey de punto calado con roturas manuales controladas, cuello redondo holgado y mangas extralargas e-boy contemporáneo.",
+    badge: "【 グランジ // DISTRESSED 】"
   },
   {
     id: 11,
-    name: "Pantalón Chino Moderno",
+    name: "Noragi Táctico Techwear Kimono",
     category: "hombre",
     categoryName: "Hombre",
-    price: 49.99,
-    originalPrice: null,
-    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80",
-    description: "Pantalón de gabardina de algodón elástico, versátil para oficina y fin de semana.",
-    badge: "Básico"
+    price: 110.00,
+    originalPrice: 135.00,
+    image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80",
+    description: "Cazadora cruzada híbrida tradicional japonesa y techwear moderno en cordura balística resistente al desgarro con cierre por hebilla rápida.",
+    badge: "【 野良着 // NORAGI 】"
   },
   {
     id: 12,
-    name: "Chaqueta Bomber Minimalista",
+    name: "Bomber MA-1 Heavy Cyber Flight",
     category: "hombre",
     categoryName: "Hombre",
-    price: 89.90,
-    originalPrice: 110.00,
-    image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=600&q=80",
-    description: "Cazadora bomber impermeable con puños acanalados y bolsillos laterales discretos.",
-    badge: "Nuevo"
+    price: 105.00,
+    originalPrice: null,
+    image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=800&q=80",
+    description: "Cazadora de vuelo con volumen holgado cropped en nylon satinado repelente al agua, puños acanalados y bolsillo táctico de manga.",
+    badge: "【 フライト // CYBER_MA1 】"
   },
 
-  // --- CATEGORÍA: ACCESORIOS ---
+  // ========================================================================
+  // CATEGORÍA: ACCESORIOS (Hardware Industrial / Gothic Platforms / Chrome)
+  // ========================================================================
   {
     id: 13,
-    name: "Bolso Tote Rose Quartz",
+    name: "Botas de Combate Gothic Platform Track 6cm",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 59.99,
-    originalPrice: 75.00,
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80",
-    description: "Bolso espacioso en tono rosa suave con detalles dorados y compartimentos organizadores.",
-    badge: "Favorito"
+    price: 125.00,
+    originalPrice: 160.00,
+    image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800&q=80",
+    description: "Botas militares de cuero con suela track dentada de plataforma de 6cm, cordones trenzados de alta tenacidad y cremallera metálica lateral.",
+    badge: "【 厚底 // PLATFORM 】"
   },
   {
     id: 14,
-    name: "Gafas de Sol Vintage Black",
+    name: "Gafas Blade Cyber Visor Neon Tint",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 28.50,
-    originalPrice: 38.00,
-    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80",
-    description: "Montura oscura geométrica con cristales polarizados y protección UV400 total.",
-    badge: null
+    price: 38.00,
+    originalPrice: 50.00,
+    image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    description: "Gafas de sol de perfil ultra-angosto rectangular en acetato negro mate con cristales polarizados de tono frío y protección UV400 completa.",
+    badge: "【 視覚 // CYBER_BLADE 】"
   },
   {
     id: 15,
-    name: "Reloj Minimal Rose Gold",
+    name: "Collar Candado Corazón & Eslabón Titanio",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 94.00,
-    originalPrice: 120.00,
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80",
-    description: "Reloj análogo con caja en tono oro rosado, correa de malla milanesa y mecanismo de cuarzo.",
-    badge: "Premium"
+    price: 35.00,
+    originalPrice: null,
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80",
+    description: "Cadena de eslabón cubano macizo con dije funcional de candado en forma de corazón grabado en acero inoxidable y titanio.",
+    badge: "【 南京錠 // HEART_PADLOCK 】"
   },
   {
     id: 16,
-    name: "Collar Layering Dorado",
+    name: "Cinturón Táctico Roller Buckle & D-Ring",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 24.99,
-    originalPrice: null,
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80",
-    description: "Cadena múltiple de baño de oro de 18k con dije circular y acabado brillante hipoalergénico.",
-    badge: "Nuevo"
+    price: 29.00,
+    originalPrice: 38.00,
+    image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=800&q=80",
+    description: "Cinturón de poliamida militar de alta densidad con hebilla de rodillo industrial en aleación de zinc y anilla D-ring para mosquetones.",
+    badge: "【 戦術 // ROLLER_BELT 】"
   },
   {
     id: 17,
-    name: "Cinturón de Cuero con Hebilla Oro",
+    name: "Set de Anillos Plata Líquida & Zircón Rosa",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 22.00,
-    originalPrice: 30.00,
-    image: "https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=600&q=80",
-    description: "Cinturón de cuero genuino negro con hebilla ovalada dorada para un ajuste perfecto.",
-    badge: null
+    price: 42.00,
+    originalPrice: 55.00,
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=80",
+    description: "Colección de 4 anillos abiertos en relieve de plata fundida con estética cyber grunge y engaste de zircón rosa oscuro facetado.",
+    badge: "【 銀 // LIQUID_CHROME 】"
   },
   {
     id: 18,
-    name: "Billetera Compacta Glam Rose",
+    name: "Chest Rig Táctico Cyber Harajuku",
     category: "accesorios",
     categoryName: "Accesorios",
-    price: 34.50,
-    originalPrice: 42.00,
-    image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&w=600&q=80",
-    description: "Monedero y tarjetero compacto de textura saffiano con cierre de cremallera metálica.",
-    badge: "Oferta"
+    price: 68.00,
+    originalPrice: 85.00,
+    image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+    description: "Bolso arnés de pecho en cordura impermeable con compartimentos técnicos de acceso rápido, correas cruzadas en la espalda y acentos reflectantes.",
+    badge: "【 胸部 // CHEST_RIG 】"
   }
 ];
-
