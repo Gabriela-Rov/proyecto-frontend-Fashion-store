@@ -3,10 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Front-End</title>
+    <title>Fashion Store | Ropa y Accesorios Exclusivos</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa</h1>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <aside class="announcement-bar" aria-label="Avisos y promociones">
+        <div class="announcement-container">
+            <p>
+                <i class="fa-solid fa-sparkles"></i> 
+                <strong>ENVÍO GRATIS</strong> en pedidos mayores a $50 | 
+                Usa el código <span class="promo-code-tag">FASHION30</span> para <strong>30% OFF</strong>
+            </p>
+        </div>
+    </aside>
+
+    <!-- HEADER Y NAVEGACIÓN -->
+    <header class="main-header" id="header">
+        <div class="header-container">
+            <!-- Menú Hamburguesa para Móviles -->
+            <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Abrir menú de navegación">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Logo de la Marca -->
+            <a href="#" class="brand-logo">
+                <span class="logo-main">FASHION</span>
+                <span class="logo-accent">STORE</span>
+            </a>
+
+            <!-- Buscador en Header -->
+            <div class="header-search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input 
+                    type="text" 
+                    id="headerSearchInput" 
+                    placeholder="Buscar vestidos, chaquetas, accesorios..." 
+                    aria-label="Buscar productos"
+                    autocomplete="off"
+                >
+                <button class="clear-search-btn" id="clearSearchBtn" title="Limpiar búsqueda">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Navegación Principal -->
+            <nav class="main-nav" id="mainNav">
+                <div class="mobile-nav-header">
+                    <span class="nav-mobile-title">Menú</span>
+                    <button class="close-nav-btn" id="closeNavBtn" aria-label="Cerrar menú">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link active">Inicio</a></li>
+                    <li><a href="#catalogo" class="nav-link" data-category="todos">Catálogo</a></li>
+                    <li><a href="#catalogo" class="nav-link" data-category="mujer">Mujer</a></li>
+                    <li><a href="#catalogo" class="nav-link" data-category="hombre">Hombre</a></li>
+                    <li><a href="#catalogo" class="nav-link" data-category="accesorios">Accesorios</a></li>
+                    <li><a href="#promocion" class="nav-link promo-link">Ofertas</a></li>
+                </ul>
+            </nav>
+
+            <!-- Acciones del Header -->
+            <div class="header-actions">
+                <!-- Botón Carrito con Badge -->
+                <button class="cart-trigger-btn" id="cartTriggerBtn" aria-label="Abrir carrito de compras">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cartBadgeCount">0</span>
+                    <span class="cart-label-text">Carrito</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Buscador móvil expandible -->
+        <div class="mobile-search-wrapper">
+            <div class="mobile-search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput" 
+                    placeholder="Buscar prendas, marcas, accesorios..." 
+                    aria-label="Buscar productos en móvil"
+                >
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER HERO PRINCIPAL -->
+    <section class="hero-section" id="hero">
+        <div class="hero-backdrop"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle"><i class="fa-solid fa-crown"></i> Nueva Colección 2026</span>
+            <h1 class="hero-title">Elegancia, Estilo y Sofisticación</h1>
+            <p class="hero-description">
+                Descubre nuestra exclusiva selección de ropa de diseñador y accesorios de tendencia pensados para resaltar tu personalidad.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#catalogo" class="btn btn-primary" id="heroExploreBtn">
+                    Explorar Catálogo <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#promocion" class="btn btn-secondary">
+                    Ver Promociones <i class="fa-solid fa-tag"></i>
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">+100</span>
+                    <span class="stat-label">Modelos Únicos</span>
+                </div>
+                <div class="stat-item-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Calidad Garantizada</span>
+                </div>
+                <div class="stat-item-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number">Envío</span>
+                    <span class="stat-label">Rápido y Seguro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIRA DE BENEFICIOS / FEATURES -->
+    <section class="features-bar">
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Envío Gratis</h4>
+                    <p>En pedidos superiores a $50</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Pago 100% Seguro</h4>
+                    <p>Transacciones cifradas SSL</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Devoluciones Fáciles</h4>
+                    <p>Hasta 30 días de garantía</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div class="feature-text">
+                    <h4>Atención Personalizada</h4>
+                    <p>Soporte al cliente 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER PROMOCIONAL INTERMEDIO -->
+    <section class="promo-banner-section" id="promocion">
+        <div class="promo-banner-card">
+            <div class="promo-badge">¡OFERTA DE TEMPORADA!</div>
+            <h2 class="promo-title">30% DE DESCUENTO ADICIONAL</h2>
+            <p class="promo-subtitle">Aplica el código de cupón al momento de tramitar tu pedido en el carrito:</p>
+            <div class="promo-code-container">
+                <code class="promo-code-display" id="promoCodeDisplay">FASHION30</code>
+                <button class="btn-copy-code" id="btnCopyCode" title="Copiar cupón">
+                    <i class="fa-regular fa-copy"></i> <span id="copyBtnText">Copiar Cupón</span>
+                </button>
+            </div>
+            <p class="promo-terms">* Válido para categorías Mujer, Hombre y Accesorios. Sin mínimo de compra.</p>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <main class="catalog-section" id="catalogo">
+        <div class="catalog-container">
+            <div class="catalog-header-text">
+                <span class="section-tag">Colecciones</span>
+                <h2 class="section-title">Nuestra Selección de Temporada</h2>
+                <p class="section-subtitle">
+                    Prendas y complementos seleccionados con esmero para elevar tu estilo al siguiente nivel.
+                </p>
+            </div>
+
+            <!-- BARRA DE CONTROLES: FILTROS POR CATEGORÍA Y ORDENAMIENTO -->
+            <div class="catalog-controls">
+                <!-- Filtros de categoría -->
+                <div class="category-filters" id="categoryFilters">
+                    <button class="filter-btn active" data-category="todos">
+                        <i class="fa-solid fa-border-all"></i> Todos (<span id="countTodos">18</span>)
+                    </button>
+                    <button class="filter-btn" data-category="mujer">
+                        <i class="fa-solid fa-venus"></i> Mujer (<span id="countMujer">6</span>)
+                    </button>
+                    <button class="filter-btn" data-category="hombre">
+                        <i class="fa-solid fa-mars"></i> Hombre (<span id="countHombre">6</span>)
+                    </button>
+                    <button class="filter-btn" data-category="accesorios">
+                        <i class="fa-solid fa-gem"></i> Accesorios (<span id="countAccesorios">6</span>)
+                    </button>
+                </div>
+
+                <!-- Opciones de ordenamiento y contador -->
+                <div class="catalog-sort-box">
+                    <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Ordenar:</label>
+                    <select id="sortSelect" class="sort-dropdown">
+                        <option value="default">Recomendados</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="name-asc">Nombre: A - Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Indicador de resultados activos -->
+            <div class="results-info-bar">
+                <span id="resultsCountText">Mostrando 18 productos</span>
+                <span id="activeFilterBadge" class="active-filter-badge" style="display: none;">
+                    Filtro: <strong id="filterBadgeLabel">Todos</strong>
+                    <button id="clearFiltersBtn" title="Restablecer filtros">&times;</button>
+                </span>
+            </div>
+
+            <!-- GRID DE PRODUCTOS -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se inyectan dinámicamente vía JavaScript -->
+            </div>
+
+            <!-- MENSAJE DE RESULTADOS VACÍOS -->
+            <div class="no-products-found" id="noProductsFound" style="display: none;">
+                <div class="empty-icon-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <h3>No encontramos productos</h3>
+                <p>No hay coincidencias para tu búsqueda o filtro seleccionado.</p>
+                <button class="btn btn-primary" id="btnResetSearch">Ver todos los productos</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- CARRITO DE COMPRAS (OFFCANVAS / DRAWER LATERAL) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
+        <!-- Header del Carrito -->
+        <div class="cart-header">
+            <div class="cart-header-title">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3>Tu Carrito</h3>
+                <span class="cart-total-badge" id="drawerCartBadge">0 ítems</span>
+            </div>
+            <button class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar carrito">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Barra de Progreso para Envío Gratis -->
+        <div class="free-shipping-tracker">
+            <p id="freeShippingText">Agrega <strong>$50.00</strong> más para obtener <strong>Envío Gratis</strong></p>
+            <div class="shipping-progress-bar">
+                <div class="shipping-progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Lista de Productos en el Carrito -->
+        <div class="cart-items-container" id="cartItemsContainer">
+            <!-- Renderizado dinámico desde JavaScript -->
+        </div>
+
+        <!-- Estado Carrito Vacío -->
+        <div class="cart-empty-state" id="cartEmptyState" style="display: none;">
+            <div class="empty-bag-icon">
+                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+            <h4>Tu carrito está vacío</h4>
+            <p>Aún no has agregado ninguna prenda o accesorio a tu lista de compras.</p>
+            <button class="btn btn-primary" id="btnGoShop">Comenzar a Comprar</button>
+        </div>
+
+        <!-- Footer del Carrito con Cálculos y Checkout -->
+        <div class="cart-footer" id="cartFooter">
+            <!-- Cupón de Descuento -->
+            <div class="coupon-box">
+                <div class="coupon-input-group">
+                    <i class="fa-solid fa-ticket coupon-icon"></i>
+                    <input 
+                        type="text" 
+                        id="couponInput" 
+                        placeholder="Ingresa cupón (ej: FASHION30)" 
+                        aria-label="Cupón de descuento"
+                    >
+                    <button id="applyCouponBtn" class="btn-apply-coupon">Aplicar</button>
+                </div>
+                <div id="couponMessage" class="coupon-feedback"></div>
+            </div>
+
+            <!-- Resumen de Costos -->
+            <div class="cart-summary-breakdown">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <strong id="cartSubtotal">$0.00</strong>
+                </div>
+                <div class="summary-row discount-row" id="discountRow" style="display: none;">
+                    <span>Descuento (<span id="discountPercent">30%</span>):</span>
+                    <strong id="cartDiscount">-$0.00</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Envío:</span>
+                    <strong id="cartShipping">Gratis</strong>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-row total-row">
+                    <span>Total Estimado:</span>
+                    <strong id="cartTotal" class="total-price-text">$0.00</strong>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="cart-actions-group">
+                <button class="btn btn-primary btn-block" id="btnCheckout">
+                    <i class="fa-solid fa-lock"></i> Proceder al Pago
+                </button>
+                <button class="btn-clear-cart" id="btnClearCart">
+                    <i class="fa-regular fa-trash-can"></i> Vaciar Carrito
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MODAL DE CHECKOUT / FINALIZAR COMPRA SIMULADA -->
+    <div class="modal-overlay" id="checkoutModalOverlay">
+        <div class="modal-window">
+            <button class="modal-close-btn" id="closeModalBtn">&times;</button>
+            
+            <div id="checkoutFormStep">
+                <div class="modal-header">
+                    <span class="modal-icon"><i class="fa-solid fa-bag-shopping"></i></span>
+                    <h3>Finalizar Compra</h3>
+                    <p>Completa tus datos para confirmar tu pedido en Fashion Store.</p>
+                </div>
+
+                <form id="checkoutForm" class="checkout-form">
+                    <div class="form-group">
+                        <label for="customerName"><i class="fa-solid fa-user"></i> Nombre Completo</label>
+                        <input type="text" id="customerName" required placeholder="Ej: Ana Gómez">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerEmail"><i class="fa-solid fa-envelope"></i> Correo Electrónico</label>
+                            <input type="email" id="customerEmail" required placeholder="tu@correo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone"><i class="fa-solid fa-phone"></i> Teléfono</label>
+                            <input type="tel" id="customerPhone" required placeholder="+52 55 1234 5678">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerAddress"><i class="fa-solid fa-location-dot"></i> Dirección de Entrega</label>
+                        <input type="text" id="customerAddress" required placeholder="Calle, número, colonia y código postal">
+                    </div>
+
+                    <div class="order-preview-box">
+                        <div class="order-preview-row">
+                            <span>Artículos a recibir:</span>
+                            <span id="previewItemsCount">0</span>
+                        </div>
+                        <div class="order-preview-row font-bold">
+                            <span>Monto Total a Pagar:</span>
+                            <span id="previewTotalAmount" class="text-pink">$0.00</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-confirm-order">
+                        <i class="fa-solid fa-check"></i> Confirmar y Realizar Pedido
+                    </button>
+                </form>
+            </div>
+
+            <!-- Vista de Éxito de Compra -->
+            <div id="checkoutSuccessStep" style="display: none;" class="checkout-success-view">
+                <div class="success-icon-wrap">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h3>¡Gracias por tu compra!</h3>
+                <p class="success-message">Tu pedido ha sido registrado con éxito en Fashion Store.</p>
+                
+                <div class="order-details-card">
+                    <p><strong>N° de Pedido:</strong> <span id="orderNumberCode">#FS-89213</span></p>
+                    <p><strong>Cliente:</strong> <span id="confirmedCustomerName"></span></p>
+                    <p><strong>Total Pagado:</strong> <span id="confirmedOrderTotal" class="text-pink font-bold"></span></p>
+                    <p class="order-note">Te hemos enviado un correo ficticio con el seguimiento de entrega.</p>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="btnContinueShopping">
+                    Seguir Comprando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENEDOR DE NOTIFICACIONES TOAST -->
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <a href="#" class="brand-logo footer-logo">
+                    <span class="logo-main">FASHION</span>
+                    <span class="logo-accent">STORE</span>
+                </a>
+                <p class="footer-about">
+                    Tu tienda de moda preferida con las mejores tendencias internacionales en ropa para mujer, hombre y accesorios exclusivos.
+                </p>
+                <div class="footer-social-links">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Categorías</h4>
+                <ul class="footer-links">
+                    <li><a href="#catalogo" data-category="mujer">Moda Mujer</a></li>
+                    <li><a href="#catalogo" data-category="hombre">Moda Hombre</a></li>
+                    <li><a href="#catalogo" data-category="accesorios">Accesorios & Joyería</a></li>
+                    <li><a href="#promocion">Ofertas de Temporada</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Atención al Cliente</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Guía de Tallas</a></li>
+                    <li><a href="#">Políticas de Envío</a></li>
+                    <li><a href="#">Devoluciones y Cambios</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-title">Métodos de Pago</h4>
+                <div class="payment-methods-grid">
+                    <span class="payment-badge"><i class="fa-brands fa-cc-visa"></i> Visa</span>
+                    <span class="payment-badge"><i class="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+                    <span class="payment-badge"><i class="fa-brands fa-cc-paypal"></i> PayPal</span>
+                    <span class="payment-badge"><i class="fa-brands fa-cc-apple-pay"></i> Apple Pay</span>
+                </div>
+                <p class="safe-checkout-label"><i class="fa-solid fa-lock"></i> Compra 100% Protegida</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 Fashion Store. Todos los derechos reservados.</p>
+                <p class="credits-text">Proyecto Front-End Fashion Store | HTML5 - CSS3 - JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
