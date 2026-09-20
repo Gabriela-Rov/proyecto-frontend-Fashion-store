@@ -3,68 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARAJUKU | Alternative Streetwear</title>
+    <meta name="description" content="Tokyo Dark Archive: streetwear alternativo de Harajuku.">
+    <title>HARAJUKU | Tokyo Dark Archive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="ticker"><div class="ticker-track"><span>TOKYO DARK ARCHIVE</span><span>ENVÍO GRATIS +$900 MXN</span><span>FASHION30 // 30% OFF</span><span>原宿から世界へ</span><span>TOKYO DARK ARCHIVE</span><span>ENVÍO GRATIS +$900 MXN</span></div></div>
 
-    <!-- Menú de Navegación -->
-    <header>
+    <header class="site-header">
         <div class="nav-container">
-            <div class="logo">HARAJUKU</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-            </ul>
-            <div class="search-cart-group">
-                <input type="text" class="search-input" placeholder="Buscar producto...">
-                <button class="cart-btn">🛒 Carrito (0)</button>
+            <button class="menu-toggle" id="menuToggleBtn" aria-label="Abrir menú">☰</button>
+            <a class="brand" href="#inicio" aria-label="Ir al inicio"><img src="images/harajuku.png" alt="Harajuku" class="brand-logo"></a>
+            <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+                <button class="close-nav" id="closeNavBtn" aria-label="Cerrar menú">×</button>
+                <a class="nav-link" href="#inicio">Inicio</a>
+                <a class="nav-link" href="#catalogo">Archivo</a>
+                <a class="nav-link" href="#catalogo" data-category="mujer">Mujer</a>
+                <a class="nav-link" href="#catalogo" data-category="hombre">Hombre</a>
+                <a class="nav-link" href="#catalogo" data-category="accesorios">Accesorios</a>
+            </nav>
+            <div class="header-actions">
+                <label class="search-shell" aria-label="Buscar en archivo">
+                    <span>検索 /</span>
+                    <input id="headerSearchInput" type="search" placeholder="BUSCAR EN ARCHIVO..." autocomplete="off">
+                    <button id="clearSearchBtn" type="button" aria-label="Limpiar búsqueda">×</button>
+                </label>
+                <button class="cart-trigger" id="cartTriggerBtn" type="button">BAG <span id="cartBadgeCount">0</span></button>
             </div>
         </div>
     </header>
 
-    <!-- Banner Promocional -->
-    <section class="hero-banner" id="inicio">
-        <h1>Harajuku Cyber Grunge</h1>
-        <p>Estilo alternativo, influencias góticas y streetwear asiático en tonos oscuros y fríos.</p>
-    </section>
-
-    <!-- Filtro de Categorías -->
-    <div class="categories-nav">
-        <button class="category-btn active">Todos</button>
-        <button class="category-btn">Hombre</button>
-        <button class="category-btn">Mujer</button>
-        <button class="category-btn">Accesorios</button>
-    </div>
-
-    <!-- Catálogo de Productos (Muestra inicial de 12 elementos) -->
-    <main class="products-container" id="catalogo">
-
-        <!-- Producto 1 -->
-        <div class="product-card">
-            <img src="images/producto1.jpg" alt="Chamarra Cyber Grunge" class="product-img">
-            <div class="product-info">
-                <h3 class="product-title">Chamarra Oversized Metal</h3>
-                <div class="product-price">$89.00 USD</div>
-                <p class="product-desc">Chamarra negra con detalles metálicos estilo e-boy.</p>
-                <button class="add-cart-btn">Agregar al carrito</button>
+    <main>
+        <section class="hero-banner" id="inicio">
+            <div class="hero-content">
+                <p class="eyebrow">FUTUREWEAR / DARK ARCHIVE</p>
+                <img src="images/harajuku.png" alt="Harajuku Tokyo Dark Archive" class="hero-logo">
+                <p class="hero-copy">Moda alternativa para una nueva generación. Siluetas oscuras, detalles industriales y energía cyber-grunge para vestir el futuro.</p>
+                <a class="hero-link" href="#catalogo">EXPLORAR COLECCIÓN <span>↘</span></a>
             </div>
-        </div>
+            <div class="hero-stamp">ARCHIVE<br>01—26</div>
+        </section>
 
-        <!-- Producto 2 -->
-        <div class="product-card">
-            <img src="images/producto2.jpg" alt="Sudadera Gothic Asian" class="product-img">
-            <div class="product-info">
-                <h3 class="product-title">Hoodie Dark Goth</h3>
-                <div class="product-price">$65.00 USD</div>
-                <p class="product-desc">Sudadera con capucha y corte holgado monocromático.</p>
-                <button class="add-cart-btn">Agregar al carrito</button>
+        <section class="service-strip" aria-label="Servicios de la tienda">
+            <div><span>01</span><strong>LOGÍSTICA GLOBAL</strong><small>Envíos a todo el mundo</small></div>
+            <div><span>02</span><strong>PAGO SEGURO</strong><small>Checkout protegido</small></div>
+            <div><span>03</span><strong>ARCHIVE QUALITY</strong><small>Piezas seleccionadas</small></div>
+            <div><span>04</span><strong>SOPORTE 24/7</strong><small>Respuesta en 24 horas</small></div>
+        </section>
+
+        <section class="coupon-banner">
+            <div><p class="eyebrow">LIMITED DROP / 30% OFF</p><h2>Tu uniforme para el lado oscuro.</h2></div>
+            <div class="coupon-code"><code>FASHION30</code><button id="btnCopyCode" type="button"><span id="copyBtnText">COPIAR CUPÓN</span> ↗</button></div>
+        </section>
+
+        <section class="catalog-section" id="catalogo">
+            <div class="section-heading"><div><p class="eyebrow">COLECCIÓN 01 / 18 PIEZAS</p><h1>THE DARK ARCHIVE</h1></div><p class="section-note">Prendas y hardware para siluetas<br>que no piden permiso.</p></div>
+            <div class="catalog-toolbar">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-category="todos">Todos <span id="countTodos">0</span></button>
+                    <button class="filter-btn" data-category="mujer">Mujer <span id="countMujer">0</span></button>
+                    <button class="filter-btn" data-category="hombre">Hombre <span id="countHombre">0</span></button>
+                    <button class="filter-btn" data-category="accesorios">Accesorios <span id="countAccesorios">0</span></button>
+                </div>
+                <label class="sort-control">ORDENAR <select id="sortSelect"><option value="default">Destacados</option><option value="price-asc">Precio menor</option><option value="price-desc">Precio mayor</option><option value="name-asc">Nombre A-Z</option></select></label>
             </div>
-        </div>
-
-        <!-- Repetir estructura para completar los 12 productos -->
-
+            <div class="results-line" id="resultsLine"><span id="resultsCountText">Mostrando productos</span><span class="search-signal" aria-hidden="true">● SIGNAL / LIVE</span><span id="activeFilterBadge" class="active-filter"><span id="filterBadgeLabel"></span><button id="clearFiltersBtn" type="button">×</button></span></div>
+            <div class="products-container" id="productsGrid"></div>
+            <div class="empty-products" id="noProductsFound" style="display:none"><p>NO HAY RESULTADOS EN ESTE ARCHIVO.</p><button id="btnResetSearch" type="button">RESTABLECER FILTROS</button></div>
+        </section>
     </main>
 
+    <div class="overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Carrito de compras">
+        <div class="drawer-header"><div><p class="eyebrow">TOKYO DARK ARCHIVE</p><h2>ARCHIVE BAG</h2></div><button id="closeCartBtn" type="button" aria-label="Cerrar carrito">×</button></div>
+        <div class="drawer-meta"><span id="drawerCartBadge">0 ítems</span><span>LOCAL STORAGE // ACTIVE</span></div>
+        <div class="cart-items" id="cartItemsContainer"></div>
+        <div class="cart-empty" id="cartEmptyState"><span>◌</span><strong>Tu bolsa está vacía</strong><p>El archivo está esperando tu selección.</p><button id="btnGoShop" type="button">VER COLECCIÓN ↘</button></div>
+        <div class="cart-footer" id="cartFooter">
+            <div class="shipping-track"><div class="shipping-copy" id="freeShippingText"></div><div class="progress"><span id="shippingProgressFill"></span></div></div>
+            <div class="coupon-form"><input id="couponInput" type="text" placeholder="CÓDIGO DE CUPÓN"><button id="applyCouponBtn" type="button">APLICAR</button></div><p id="couponMessage" class="coupon-feedback"></p>
+            <div class="totals"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00 MXN</strong></div><div id="discountRow"><span>Descuento <small id="discountPercent"></small></span><strong id="cartDiscount">-$0.00 MXN</strong></div><div><span>Envío</span><strong id="cartShipping">$0.00 MXN</strong></div><div class="total-row"><span>Total</span><strong id="cartTotal">$0.00 MXN</strong></div></div>
+            <button class="checkout-btn" id="btnCheckout" type="button">FINALIZAR PEDIDO ↗</button><button class="clear-cart" id="btnClearCart" type="button">VACIAR SELECCIÓN</button>
+        </div>
+    </aside>
+
+    <div class="modal-overlay" id="checkoutModalOverlay">
+        <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+            <button class="modal-close" id="closeModalBtn" type="button" aria-label="Cerrar checkout">×</button>
+            <div id="checkoutFormStep"><p class="eyebrow">SECURE CHECKOUT</p><h2 id="checkoutTitle">CONFIRMA TU PEDIDO</h2><p class="checkout-preview"><span id="previewItemsCount">0 productos</span><strong id="previewTotalAmount">$0.00 MXN</strong></p><form id="checkoutForm"><label>Nombre completo<input id="customerName" type="text" required><small id="errorCustomerName"></small></label><label>Correo electrónico<input id="customerEmail" type="email" required><small id="errorCustomerEmail"></small></label><label>Teléfono<input id="customerPhone" type="tel" inputmode="numeric" maxlength="10" required><small id="errorCustomerPhone"></small></label><label>Dirección de entrega<textarea id="customerAddress" rows="3" required></textarea><small id="errorCustomerAddress"></small></label><button class="checkout-btn" type="submit">CONFIRMAR COMPRA ↗</button></form></div>
+            <div class="checkout-success" id="checkoutSuccessStep"><span class="success-mark">✓</span><p class="eyebrow">ORDER ARCHIVED</p><h2>GRACIAS, <span id="confirmedCustomerName"></span></h2><p>Tu pedido ha sido registrado en el archivo.</p><code id="orderNumberCode">#FS-00000</code><strong>Total: <span id="confirmedOrderTotal">$0.00 MXN</span></strong><button class="checkout-btn" id="btnContinueShopping" type="button">VOLVER A LA COLECCIÓN</button></div>
+        </section>
+    </div>
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+    <script src="js/products.js"></script><script src="js/app.js"></script>
 </body>
 </html>

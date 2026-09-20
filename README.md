@@ -9,10 +9,6 @@ Sitio web front-end de comercio electrónico desarrollado con **HTML5 semántico
 - **Paleta de Color (Negro Dominante + Blanco + Acento Rosa):**
   - **Negro Abismo & Grafito (75%+):** `#060709`, `#0B0C10`, `#101217` (Fondos oscuros profundos con textura analógica film grain sutil).
   - **Blanco Frío (15%):** `#FFFFFF`, `#F0F1F5` (Tipografía principal de alto contraste y botones destacados).
-  - **Rosa Cibernético / Toxic Rose (10%):** `#FF2A7A` (Acento e-girl para badges de archivo, contadores de carrito, bordes activos y detalles de lookbook).
-- **Influencia Japonesa & E-Girl:**
-  - Microtexto bilingüe y kanji técnico: `【 東京 // TOKYO ARCHIVE 】`, `【 暗黒 // DARK SYSTEM 】`, `【 地雷系 // JIRAI 】`.
-  - Iconografía y motivos: Cadenas desmontables, ojales metálicos (grommets), candados de corazón, alfileres de gancho (safety pins) y códigos de barra reflectantes.
 - **Tipografía Editorial:**
   - Títulos y cabeceras: `Syne` + `Space Grotesk` con mayúsculas y tracking expandido.
   - Textos de contenido: `Inter` con alta legibilidad y confort visual en modo oscuro.
@@ -41,7 +37,7 @@ Sitio web front-end de comercio electrónico desarrollado con **HTML5 semántico
 
 4. **Carrito Desplegable (Archive Bag):**
    - Panel lateral oscuro con marco de acero y detalles en rosa cibernético.
-   - Barra de progreso para **Envío Gratis** (compras mayores a $50.00 USD).
+   - Barra de progreso para **Envío Gratis** (compras mayores a $900.00 MXN).
    - Steppers numéricos de cantidad `[-] 01 [+]`.
    - **Vaciado directo al pulsar "[ VACIAR SELECCIÓN ]"** (sin confirmaciones innecesarias).
    - Cálculos en tiempo real de Subtotal, Descuento, Envío y Total.

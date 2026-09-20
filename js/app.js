@@ -20,6 +20,17 @@ const AppState = {
     standardShippingCost: 5.00
 };
 
+const USD_TO_MXN = 18;
+const currencyFormatter = new Intl.NumberFormat('es-MX', {
+    style: 'currency',
+    currency: 'MXN',
+    minimumFractionDigits: 2
+});
+
+function formatCurrency(usdAmount) {
+    return currencyFormatter.format(usdAmount * USD_TO_MXN);
+}
+
 // ==========================================
 // 2. REFERENCIAS AL DOM
 // ==========================================
@@ -178,6 +189,9 @@ function renderCatalog() {
     // Actualizar indicador de cantidad
     const count = filteredProducts.length;
     DOM.resultsCountText.textContent = `Mostrando ${count} ${count === 1 ? 'producto' : 'productos'}`;
+    const resultsLine = document.getElementById('resultsLine');
+    resultsLine.classList.toggle('search-active', AppState.searchQuery.trim() !== '');
+    DOM.productsGrid.classList.toggle('search-results-active', AppState.searchQuery.trim() !== '');
 
     // Actualizar badge de filtro activo
     if (AppState.currentCategory !== 'todos' || AppState.searchQuery !== '') {
@@ -214,17 +228,13 @@ function renderCatalog() {
                         src="${product.image}" 
                         alt="${product.name}" 
                         loading="lazy"
-                        onerror="this.src='https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=600&q=80'"
                         onerror="this.src='https://images.unsplash.com/photo-1520975954732-35dd22299614?auto=format&fit=crop&w=800&q=80'"
                     >
                     ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
                     <span class="category-tag">${product.categoryName}</span>
-                    ${product.badge ? `<span class="product-badge">[ ${product.badge} ]</span>` : ''}
-                    <span class="category-tag">// ${product.categoryName.toUpperCase()}</span>
                 </div>
 
                 <div class="product-info">
-                    <h3 class="product-title" title="${product.name}">${product.name}</h3>
                     <div class="product-info-top">
                         <span class="product-ref-id">SYS_ID_${String(product.id).padStart(2, '0')}</span>
                         <h3 class="product-title" title="${product.name}">${product.name}</h3>
@@ -232,14 +242,12 @@ function renderCatalog() {
                     <p class="product-desc">${product.description}</p>
                     
                     <div class="product-pricing">
-                        <span class="product-price">$${product.price.toFixed(2)}</span>
-                        <span class="product-price">$${product.price.toFixed(2)} <span class="currency-tag">USD</span></span>
-                        ${hasDiscount ? `<span class="product-old-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                        <span class="product-price">${formatCurrency(product.price)} <span class="currency-tag">MXN</span></span>
+                        ${hasDiscount ? `<span class="product-old-price">${formatCurrency(product.originalPrice)} MXN</span>` : ''}
                     </div>
 
                     <button class="btn-add-cart" onclick="handleAddToCart(${product.id}, this)">
-                        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-                        <i class="fa-solid fa-plus"></i> AGREGAR AL CARRITO
+                        + AGREGAR AL CARRITO
                     </button>
                 </div>
             </article>
@@ -280,7 +288,6 @@ window.handleAddToCart = function(productId, btnElement = null) {
     if (btnElement) {
         const originalHtml = btnElement.innerHTML;
         btnElement.classList.add('added-feedback');
-        btnElement.innerHTML = `<i class="fa-solid fa-check"></i> ¡Agregado!`;
         btnElement.innerHTML = `<i class="fa-solid fa-check"></i> [ AGREGADO ]`;
         setTimeout(() => {
             btnElement.classList.remove('added-feedback');
@@ -289,7 +296,6 @@ window.handleAddToCart = function(productId, btnElement = null) {
     }
 
     // Notificación Toast
-    showToast(`"${product.name}" se agregó al carrito`, 'fa-solid fa-bag-shopping');
     showToast(`"${product.name}" archivado en el carrito`, 'fa-solid fa-bag-shopping');
 };
 
@@ -367,7 +373,7 @@ function updateCartUI() {
         DOM.cartFooter.style.display = 'none';
         
         // Reset de tracker de envío gratis
-        DOM.freeShippingText.innerHTML = `Agrega <strong>$${AppState.freeShippingThreshold.toFixed(2)}</strong> más para obtener <strong>Envío Gratis</strong>`;
+        DOM.freeShippingText.innerHTML = `Agrega <strong>${formatCurrency(AppState.freeShippingThreshold)}</strong> más para obtener <strong>Envío Gratis</strong>`;
         DOM.shippingProgressFill.style.width = '0%';
         return;
     }
@@ -387,19 +393,19 @@ function updateCartUI() {
 
                 <div class="cart-item-details">
                     <h4 class="cart-item-title">${item.name}</h4>
-                    <span class="cart-item-unit-price">$${item.price.toFixed(2)} c/u</span>
+                    <span class="cart-item-unit-price">${formatCurrency(item.price)} c/u</span>
 
                     <div class="cart-item-bottom">
                         <div class="quantity-controls">
                             <button class="qty-btn" onclick="updateCartQuantity(${item.id}, -1)" title="Reducir">
-                                <i class="fa-solid fa-minus"></i>
+                                −
                             </button>
                             <span class="qty-val">${item.quantity}</span>
                             <button class="qty-btn" onclick="updateCartQuantity(${item.id}, 1)" title="Aumentar">
-                                <i class="fa-solid fa-plus"></i>
+                                +
                             </button>
                         </div>
-                        <span class="cart-item-subtotal">$${itemSubtotal.toFixed(2)}</span>
+                        <span class="cart-item-subtotal">${formatCurrency(itemSubtotal)}</span>
                     </div>
                 </div>
 
@@ -419,7 +425,7 @@ function updateCartUI() {
     if (subtotal < AppState.freeShippingThreshold) {
         shippingCost = AppState.standardShippingCost;
         const missingForFree = AppState.freeShippingThreshold - subtotal;
-        DOM.freeShippingText.innerHTML = `Agrega <strong>$${missingForFree.toFixed(2)}</strong> más para obtener <strong>Envío Gratis</strong>`;
+        DOM.freeShippingText.innerHTML = `Agrega <strong>${formatCurrency(missingForFree)}</strong> más para obtener <strong>Envío Gratis</strong>`;
         const percentage = Math.min(100, Math.round((subtotal / AppState.freeShippingThreshold) * 100));
         DOM.shippingProgressFill.style.width = `${percentage}%`;
     } else {
@@ -430,18 +436,18 @@ function updateCartUI() {
     const total = Math.max(0, (subtotal - discountAmount) + shippingCost);
 
     // Actualizar textos en el DOM
-    DOM.cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+    DOM.cartSubtotal.textContent = formatCurrency(subtotal);
     
     if (AppState.discountRate > 0) {
         DOM.discountRow.style.display = 'flex';
         DOM.discountPercent.textContent = `${Math.round(AppState.discountRate * 100)}%`;
-        DOM.cartDiscount.textContent = `-$${discountAmount.toFixed(2)}`;
+        DOM.cartDiscount.textContent = `-${formatCurrency(discountAmount)}`;
     } else {
         DOM.discountRow.style.display = 'none';
     }
 
-    DOM.cartShipping.textContent = shippingCost === 0 ? 'Gratis' : `$${shippingCost.toFixed(2)}`;
-    DOM.cartTotal.textContent = `$${total.toFixed(2)}`;
+    DOM.cartShipping.textContent = shippingCost === 0 ? 'Gratis' : formatCurrency(shippingCost);
+    DOM.cartTotal.textContent = formatCurrency(total);
 }
 
 /**
@@ -469,6 +475,13 @@ function handleApplyCoupon() {
 function showCouponFeedback(msg, type) {
     DOM.couponMessage.textContent = msg;
     DOM.couponMessage.className = `coupon-feedback ${type}`;
+}
+
+function revealSearchResults() {
+    const catalogSection = document.getElementById('catalogo');
+    if (!catalogSection || catalogSection.getBoundingClientRect().top <= window.innerHeight * 0.35) return;
+
+    catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ==========================================
@@ -764,19 +777,23 @@ function initEventListeners() {
 
     // Buscador en Desktop
     DOM.headerSearchInput.addEventListener('input', (e) => {
+        const hadSearchQuery = AppState.searchQuery.trim() !== '';
         AppState.searchQuery = e.target.value;
         if (DOM.mobileSearchInput) DOM.mobileSearchInput.value = e.target.value;
         DOM.clearSearchBtn.style.display = AppState.searchQuery ? 'block' : 'none';
         applyFiltersAndSort();
+        if (!hadSearchQuery && AppState.searchQuery.trim() !== '') revealSearchResults();
     });
 
     // Buscador en Móvil
     if (DOM.mobileSearchInput) {
         DOM.mobileSearchInput.addEventListener('input', (e) => {
+            const hadSearchQuery = AppState.searchQuery.trim() !== '';
             AppState.searchQuery = e.target.value;
             DOM.headerSearchInput.value = e.target.value;
             DOM.clearSearchBtn.style.display = AppState.searchQuery ? 'block' : 'none';
             applyFiltersAndSort();
+            if (!hadSearchQuery && AppState.searchQuery.trim() !== '') revealSearchResults();
         });
     }
 
