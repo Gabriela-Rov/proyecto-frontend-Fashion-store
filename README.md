@@ -1,6 +1,6 @@
 # Fashion Store // 【 東京・暗黒 】 TOKYO DARK ARCHIVE (Front-End)
 
-Sitio web front-end de comercio electrónico desarrollado con **HTML5 semántico**, **CSS3 moderno** y **JavaScript Vanilla**. Diseñado bajo una estética híbrida de vanguardia inspirada en **Dark E-Girl**, **Cyber Grunge contemporáneo**, **Streetwear alternativo japonés (Harajuku y Jirai Kei)** y **acabados industriales oscuros**.
+Sitio web front-end de comercio electrónico desarrollado con **HTML5**, **CSS3** y **JavaScript**. Diseñado con estética inspirada en **Dark E-Girl**, **Cyber Grunge contemporáneo**, **Streetwear alternativo japonés (Harajuku y Jirai Kei)** y **acabados industriales oscuros**.
 
 ---
 
